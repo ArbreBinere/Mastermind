@@ -17,6 +17,11 @@ public class Modele {
 		this.diff = 4;
 		this.nb_tenta = 10;
 		this.Combinaison = new Rangee();
+		this.propositions = new Rangee[nb_tenta];
+		for(int i=0;i<nb_tenta;i++){
+			propositions[i] = new Rangee();
+		}
+		this.tentative = 0;
 		Random r = new Random();
 		for(int i =0; i<this.diff; i++){
 			Combinaison.jeton[i] = COULEURS[r.nextInt(COULEURS.length)];
@@ -28,7 +33,7 @@ public class Modele {
 		r.jeton[r.indiceJeton] = c;
 		r.indiceJeton++;
 		if(r.indiceJeton==r.taille){
-			Eval_propa();
+			//Eval_propa();
 		}
 	}
 	
@@ -41,6 +46,7 @@ public class Modele {
 	public static void main(String[] args) {
 		Modele m = new Modele();
 		m.Affich_color();
+		m.ajout_Couleur(Color.black);
 	}
 
 }
