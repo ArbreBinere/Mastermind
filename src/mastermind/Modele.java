@@ -7,6 +7,10 @@ public class Modele {
 	public static int nb_tenta;
 	public static int diff;
 	public static enum Etat { EN_COURS, GAGNE, PERDU };
+	public Etat etat;
+	public Rangee Combinaison;
+	public Rangee[] propositions;
+	public int tentative;
 	
 	public Modele() {
 		this.diff = 4;
