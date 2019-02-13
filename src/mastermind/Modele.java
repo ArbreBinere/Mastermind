@@ -23,6 +23,15 @@ public class Modele {
 		}
 	}
 	
+	public void ajout_Couleur(Color c){
+		Rangee r = propositions[tentative];
+		r.jeton[r.indiceJeton] = c;
+		r.indiceJeton++;
+		if(r.indiceJeton==r.taille){
+			Eval_propa();
+		}
+	}
+	
 	public void Affich_color(){
 		for (int i=0; i<this.Combinaison.taille; i++){
 			System.out.println(this.Combinaison.jeton[i]);
