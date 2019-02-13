@@ -18,10 +18,23 @@ public class Modele {
 		this.nb_tenta = 10;
 		tentative = 0;
 		this.Combinaison = new Rangee();
-		this.propositions = new  Rangee[nb_tenta];
+		this.propositions = new Rangee[nb_tenta];
+		for(int i=0;i<nb_tenta;i++){
+			propositions[i] = new Rangee();
+		}
+		this.tentative = 0;
 		Random r = new Random();
 		for(int i =0; i<this.diff; i++){
 			Combinaison.jeton[i] = COULEURS[r.nextInt(COULEURS.length)];
+		}
+	}
+	
+	public void ajout_Couleur(Color c){
+		Rangee r = propositions[tentative];
+		r.jeton[r.indiceJeton] = c;
+		r.indiceJeton++;
+		if(r.indiceJeton==r.taille){
+			//Eval_propa();
 		}
 	}
 	
@@ -58,6 +71,7 @@ public class Modele {
 		Rangee r = new Rangee();
 		m.Eval_propa(r);
 		m.Affich_color();
+		m.ajout_Couleur(Color.black);
 	}
 
 }
