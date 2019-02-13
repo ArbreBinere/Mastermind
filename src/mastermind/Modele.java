@@ -34,7 +34,7 @@ public class Modele {
 		r.jeton[r.indiceJeton] = c;
 		r.indiceJeton++;
 		if(r.indiceJeton==r.taille){
-			//Eval_propa();
+			Eval_propa(r);
 		}
 	}
 	
