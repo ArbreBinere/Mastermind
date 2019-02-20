@@ -1,10 +1,11 @@
 package mastermind;
 
 import java.awt.Color;
+import java.util.Observable;
 import java.util.Random;
 
-public class Modele {
-	public static Color[] COULEURS = {Color.yellow, Color.green, Color.blue, Color.magenta, Color.red, Color.orange, Color.white, Color.black};
+public class Modele extends Observable{
+	public Color[] COULEURS = {Color.yellow, Color.green, Color.blue, Color.magenta, Color.red, Color.orange, Color.white, Color.black};
 	public static int nb_tenta;
 	public static int diff;
 	public static enum Etat { EN_COURS, GAGNE, PERDU };
@@ -37,12 +38,16 @@ public class Modele {
 	}
 	
 	public void ajout_Couleur(Color c){
-		Rangee r = propositions[tentative];
+		Rangee r = this.propositions[tentative];
 		r.jeton[r.indiceJeton] = c;
 		r.indiceJeton++;
 		if(r.indiceJeton==r.taille){
 			Eval_propa(r);
 		}
+		this.setChanged();
+		//System.out.println("ajoutcou");
+		this.notifyObservers();
+		//Mise à jour visuelle
 	}
 	
 	public void Affich_color(){
@@ -52,7 +57,7 @@ public class Modele {
 	}
 	
 	public void Eval_propa(Rangee r){
-		this.propositions[tentative] = new Rangee();
+		//this.propositions[tentative] = new Rangee();
 		Rangee fred = this.propositions[tentative];  // simplification ecriture 
 		Color[] propa = fred.jeton.clone();  // copie de la liste des couleurs de la proposition
 		Color[] solution = this.Combinaison.jeton.clone(); // copie de la liste des couleurs de la solution 

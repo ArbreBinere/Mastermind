@@ -18,7 +18,7 @@ public class Fenetre extends Frame implements WindowListener {
 		Modele modl = new Modele();
 		this.setLayout(new BorderLayout());
 		
-		VueClavier clavier = new VueClavier();
+		VueClavier clavier = new VueClavier(modl);
 		this.add(clavier, BorderLayout.SOUTH);
 		
 		VuePropositions prop  = new VuePropositions(modl);
