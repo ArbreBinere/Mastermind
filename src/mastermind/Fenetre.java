@@ -14,12 +14,15 @@ public class Fenetre extends Frame implements WindowListener {
 	}
 	
 	public Fenetre(){
+		
+		Modele modl = new Modele();
 		this.setLayout(new BorderLayout());
 		
 		VueClavier clavier = new VueClavier();
 		this.add(clavier, BorderLayout.SOUTH);
 		
-		//VuePropositions prop  = new VuePropositions();
+		VuePropositions prop  = new VuePropositions(modl);
+		this.add(prop, BorderLayout.NORTH);
 		
 		this.addWindowListener(this);
 		this.setTitle("Mastermind");
